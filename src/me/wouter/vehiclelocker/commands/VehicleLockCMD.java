@@ -21,7 +21,7 @@ public class VehicleLockCMD implements CommandExecutor {
             DataFile.getInstance().getData().set(p.getUniqueId() + ".Locked", true);
             p.sendMessage(Main.cc("Command.Locked"));
         } else {
-            DataFile.getInstance().getData().set(p.getUniqueId() + ".Locked", false);
+            DataFile.getInstance().getData().set(p.getUniqueId(), null);
             p.sendMessage(Main.cc("Command.Unlocked"));
         }
         return true;
