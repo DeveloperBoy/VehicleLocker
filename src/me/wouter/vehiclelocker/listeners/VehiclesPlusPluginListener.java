@@ -17,7 +17,7 @@ public class VehiclesPlusPluginListener implements Listener {
         UUID ownerUUID = UUID.fromString(e.getVehicle().getOwnerUUID());
         if (ownerUUID != player.getUniqueId()) {
             if (Bukkit.getPlayer(ownerUUID) != null) {
-            	Player owner = Bukkit.getPlayer(ownerUUID);
+                Player owner = Bukkit.getPlayer(ownerUUID);
                 if (DataFile.getInstance().getData().getBoolean(owner.getUniqueId() + ".Locked")) {
                     player.sendMessage(Main.cc("VehicleIsLocked").replaceAll("<Player>", owner.getName()));
                     e.setCancelled(true);
