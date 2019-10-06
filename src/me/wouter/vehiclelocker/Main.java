@@ -17,6 +17,7 @@ public class Main extends JavaPlugin implements Listener {
 	private static Plugin pl;
 	boolean vehiclesPlugin = false;
 	boolean craftmotoPlugin = false;
+	boolean vehiclesPlusPlugin = false;
 	
 	@SuppressWarnings("deprecation")
 	public void onEnable() {
@@ -34,12 +35,20 @@ public class Main extends JavaPlugin implements Listener {
 			
 			Bukkit.getPluginManager().registerEvents(new VehiclesPluginListener(), this);
 		}
+		if (Bukkit.getPluginManager().isPluginEnabled("VehiclesPlus")) {
+			getLogger().severe(color("&3VehiclesPlus &bv" + Bukkit.getPluginManager().getPlugin("VehiclesPlus").getDescription().getVersion() + " &3found! Hooking.."));
+			vehiclesPlusPlugin = true;
+			
+			Bukkit.getPluginManager().registerEvents(new VehiclesPluginListener(), this);
+		}
 		
 		
 		if (!vehiclesPlugin && !craftmotoPlugin) {
-			getLogger().severe(color("&4Either Vehicles or Craftmoto &cis required for VehicleLocker to function."));
+			getLogger().severe(color("&4Vehicles, VehiclesPlus or Craftmoto &care required for VehicleLocker to function."));
 			getLogger().severe(color("You can purchase Vehicles here: https://www.spigotmc.org/resources/Vehicles.12446/"));
 			getLogger().severe(color("You can purchase Craftmoto here: https://www.spigotmc.org/resources/Craftmoto.44111/"));
+			getLogger().severe(color("You can get VehiclesPlus Lite here: https://www.spigotmc.org/resources/vehiclesplus-lite.53588/"));
+			getLogger().severe(color("You can purchase VehiclesPlus Pro here: https://www.spigotmc.org/resources/vehiclesplus-pro.70523/"));
 			Bukkit.getPluginManager().disablePlugin(pl);
 			return;
 		}
